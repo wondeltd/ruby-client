@@ -1,0 +1,4 @@
+#!/usr/bin/ruby
+require 'wondeclient'
+
+puts "CLI client not implemented yet"
