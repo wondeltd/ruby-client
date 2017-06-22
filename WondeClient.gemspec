@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   dirs.each do |dir|
     files += Dir["#{dir}/**/*"]
   end
-  s.add_runtime_dependency 'unirest'
+  s.add_dependency 'unirest', "~> 1.1.2"
   s.files       = files
   s.homepage    = 'https://github.com/wondeltd'
   s.license       = 'MIT'
