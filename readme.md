@@ -3,15 +3,25 @@ Documentation https://wonde.com/docs/api/1.0/
 
 ## Installation
 
+Native gem:
+
 ```bash
 gem install wondeclient
 ```
 
-or from source
-```bash
-gem build WondeClient.gemspec
-gem install wondeclient-0.0.1.gem
+When using [bundler](http://bundler.io/) place this to your `Gemfile`:
+
+```ruby
+gem 'wondeclient'
 ```
+
+Or if you want to use latest github `master`
+
+```ruby
+gem 'wondeclient', github: 'wondeltd/ruby-client'
+```
+
+... and run `$ bundle install`
 
 ## Early Release
 
