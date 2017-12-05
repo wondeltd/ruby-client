@@ -447,6 +447,20 @@ school.medicalEvents.all().each do |medicalEvent|
 end
 ```
 
+### Medical Notes
+
+```ruby
+require 'wondeclient'
+client = Wonde::Client.new('TOKEN_GOES_HERE')
+
+school = client.school('SCHOOL_ID_GOES_HERE')
+
+# Get medical notes
+school.medicalNotes.all().each do |medicalNote|
+    p medicalNote.title
+end
+```
+
 ### Periods
 
 ```ruby
