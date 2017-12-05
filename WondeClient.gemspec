@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'wondeclient'
-  s.version     = '0.0.6'
-  s.date        = '2016-03-10'
+  s.version     = '0.0.8'
+  s.date        = '2017-12-05'
   s.summary     = "Wonde Client"
   s.description = "Wonde Client"
   s.authors     = ["Mike Donlon"]
