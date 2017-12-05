@@ -21,7 +21,7 @@ module Wonde
     def each
       original_length = @myarray.length - 1
       @myarray.each_with_index do |val,index|
-        if index >= original_length and self.meta.pagination.more
+        if index >= original_length and self.meta and self.meta.pagination.more
           resp = self.getUrl(self.meta.pagination.next).body
           jsonized = resp.to_json
           nextResponse = JSON.parse(jsonized, object_class: OpenStruct)
