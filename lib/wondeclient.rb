@@ -20,6 +20,7 @@ module Wonde
   autoload :Lessons, 'endpoints/lessons'
   autoload :MedicalConditions, 'endpoints/medicalconditions'
   autoload :MedicalEvents, 'endpoints/medicalevents'
+  autoload :MedicalNotes, 'endpoints/medicalnotes'
   autoload :Periods, 'endpoints/periods'
   autoload :Photos, 'endpoints/photos'
   autoload :Rooms, 'endpoints/rooms'

@@ -2,9 +2,9 @@ module Wonde
   class Schools < Endpoints
     attr_accessor :uri, :achievements, :attendance, :behaviours, :classes,
                   :contacts, :counts, :employees, :groups, :lessons,
-                  :lessonAttendance, :medicalConditions, :medicalEvents, :periods,
-                  :photos, :rooms, :subjects, :students, :assessment, :deletions,
-                  :events
+                  :lessonAttendance, :medicalConditions, :medicalEvents,
+                  :medicalNotes, :periods, :photos, :rooms, :subjects, :students,
+                  :assessment, :deletions, :events
     @@uri = 'schools/'
     def initialize(token, id=false)
       super(token, id)
@@ -27,6 +27,7 @@ module Wonde
       self.lessonAttendance  = Wonde::LessonAttendance.new(token, self.uri)
       self.medicalConditions = Wonde::MedicalConditions.new(token, self.uri)
       self.medicalEvents     = Wonde::MedicalEvents.new(token, self.uri)
+      self.medicalNotes      = Wonde::MedicalNotes.new(token, self.uri)
       self.periods           = Wonde::Periods.new(token, self.uri)
       self.photos            = Wonde::Photos.new(token, self.uri)
       self.rooms             = Wonde::Rooms.new(token, self.uri)

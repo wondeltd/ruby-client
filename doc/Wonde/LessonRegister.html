@@ -6,7 +6,7 @@
 <title>
   Class: Wonde::LessonRegister
   
-    &mdash; Documentation by YARD 0.9.8
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -194,6 +194,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">#<strong>to_json</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -311,10 +333,6 @@
       <pre class="lines">
 
 
-8
-9
-10
-11
 12
 13
 14
@@ -327,10 +345,14 @@
 21
 22
 23
-24</pre>
+24
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/writeback/lessonregister.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/writeback/lessonregister.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_lessonAttendance'>lessonAttendance</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_newlessonattendance'>newlessonattendance</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -354,14 +376,44 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    #<strong>to_json</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/writeback/lessonregister.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='rparen'>)</span>
+        <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attendance</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attendance'>attendance</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri Mar 10 16:00:57 2017 by
+  Generated on Tue Dec  5 22:07:27 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.3.1).
+  0.9.12 (ruby-2.3.3).
 </div>
 
     </div>
