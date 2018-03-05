@@ -23,8 +23,7 @@ module Wonde
       @myarray.each_with_index do |val,index|
         if index >= original_length and self.meta.pagination.more
           resp = self.getUrl(self.meta.pagination.next).body
-          jsonized = resp.to_json
-          nextResponse = JSON.parse(jsonized, object_class: OpenStruct)
+          nextResponse = JSON.parse(resp, object_class: OpenStruct)
           p nextResponse if ENV["debug_wonde"]
           self.meta  = nextResponse.meta unless nextResponse.meta.nil?
           nextResponse.data.each do |element|

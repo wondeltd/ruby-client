@@ -2,7 +2,7 @@ module Wonde
   # Top level Endpoints class, most of our classes inherit from this
   # Some methods use this directly
   class Endpoints
-    require 'unirest'
+    require 'rest-client'
     require 'ostruct'
     require "addressable/uri"
     require 'json'
@@ -26,7 +26,7 @@ module Wonde
     def getRequest(endpoint)
       puts "self.endpoint: " + self.endpoint if ENV["debug_wonde"]
       puts "endpoint:" + endpoint if ENV["debug_wonde"]
-      return getUrl(self.endpoint + endpoint)
+      getUrl(self.endpoint + endpoint)
     end
 
     # Forwards request info to unirest
@@ -34,7 +34,14 @@ module Wonde
     # @param url [String]
     # @return [Object]
     def getUrl(url)
-      return _client().get(url)
+      RestClient::Request.execute(
+        method: :get,
+        url: url,
+        headers: {
+          "Authorization" => "Basic #{self.token}",
+          "User-Agent" => "wonde-rb-client-#{self.version}"
+        }
+      )
     end
 
     # Builds get request and passes it along
@@ -56,48 +63,61 @@ module Wonde
       end
       response = getRequest(uri).body["data"]
       puts response if ENV["debug_wonde"]
-      jsonized = response.to_json
-      puts jsonized if ENV["debug_wonde"]
-      object = JSON.parse(jsonized, object_class: OpenStruct)
+      object = JSON.parse(response, object_class: OpenStruct)
       puts object if ENV["debug_wonde"]
-      return object
+      object
     end
 
     def postRequest(endpoint, body=Hash.new())
       puts "self.endpoint:\n " + self.endpoint if ENV["debug_wonde"]
       puts "endpoint:\n" + endpoint if ENV["debug_wonde"]
       puts "body:\n" + body.to_json if ENV["debug_wonde"]
-      return postUrl(self.endpoint + endpoint, body)
+      postUrl(self.endpoint + endpoint, body)
     end
 
     def postUrl(url, body=Hash.new())
       puts body.to_json if ENV["debug_wonde"]
-      return _client().post(url, headers:{ "Accept" => "application/json",
-                                          "Content-Type" => "application/json"},
-                        parameters:body.to_json)
+      RestClient::Request.execute(
+        method: :post,
+        url: url,
+        headers: {
+          "Authorization" => "Basic #{self.token}",
+          "User-Agent" => "wonde-rb-client-#{self.version}",
+          "Accept" => "application/json",
+          "Content-Type" => "application/json",
+        },
+        payload: body.to_json,
+      )
     end
 
     def post(body=Hash.new())
-      hash_response = self.postRequest(self.uri, body).body
+      hash_response = JSON.parse(self.postRequest(self.uri, body).body)
       if hash_response.nil?
         return Hash.new()
       end
-      return OpenStruct.new hash_response
-
+      OpenStruct.new hash_response
     end
 
     def deleteRequest(endpoint, body=Hash.new())
       puts "self.endpoint: " + self.endpoint if ENV["debug_wonde"]
       puts "endpoint:" + endpoint if ENV["debug_wonde"]
       puts "body:" + body.to_json if ENV["debug_wonde"]
-      return deleteUrl(self.endpoint + endpoint, body)
+      deleteUrl(self.endpoint + endpoint, body)
     end
 
     def deleteUrl(url, body=Hash.new())
       puts body.to_json if ENV["debug_wonde"]
-      return _client().delete(url, headers:{ "Accept" => "application/json",
-                                          "Content-Type" => "application/json"},
-                        parameters:body.to_json)
+      RestClient::Request.execute(
+        method: :delete,
+        url: url,
+        headers: {
+          "Authorization" => "Basic #{self.token}",
+          "User-Agent" => "wonde-rb-client-#{self.version}",
+          "Accept" => "application/json",
+          "Content-Type" => "application/json",
+        },
+        payload: body.to_json,
+      )
     end
 
     def delete(body=Hash.new())
@@ -105,8 +125,7 @@ module Wonde
       if hash_response.nil?
         return Hash.new()
       end
-      return OpenStruct.new hash_response
-
+      OpenStruct.new hash_response
     end
 
     def all(includes = Array.new(), parameters = Hash.new())
@@ -124,18 +143,9 @@ module Wonde
       end
       response = getRequest(uri).body
       puts response if ENV["debug_wonde"]
-      jsonized = response.to_json
-      puts jsonized if ENV["debug_wonde"]
-      object = JSON.parse(jsonized, object_class: OpenStruct)
+      object = JSON.parse(response, object_class: OpenStruct)
       puts object if ENV["debug_wonde"]
-      return ResultIterator.new(object,self.token)
+      ResultIterator.new(object,self.token)
     end
-
-    private
-      def _client()
-        Unirest.default_header('Authorization', ('Basic ' + self.token))
-        Unirest.default_header("User-Agent", ("wonde-rb-client-" + self.version))
-        return Unirest
-      end
   end
 end
