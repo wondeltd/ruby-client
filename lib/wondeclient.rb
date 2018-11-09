@@ -8,6 +8,7 @@ module Wonde
   autoload :Assessment, 'endpoints/assessment'
   autoload :Attendance, 'endpoints/attendance'
   autoload :AttendanceCodes, 'endpoints/attendancecodes'
+  autoload :AttendanceSummaries, 'endpoints/attendancesummaries'
   autoload :Behaviours, 'endpoints/behaviours'
   autoload :Classes, 'endpoints/classes'
   autoload :Contacts, 'endpoints/contacts'
