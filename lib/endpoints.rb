@@ -38,7 +38,7 @@ module Wonde
         method: :get,
         url: url,
         headers: {
-          "Authorization" => "Basic #{self.token}",
+          "Authorization" => "Bearer #{self.token}",
           "User-Agent" => "wonde-rb-client-#{self.version}"
         }
       )
