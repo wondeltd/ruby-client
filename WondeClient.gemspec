@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'wondeclient'
-  s.version     = '0.1.2'
-  s.date        = '2019-10-15'
+  s.version     = '0.1.3'
+  s.date        = '2019-11-15'
   s.summary     = "Wonde Client"
   s.description = "Wonde Client"
   s.authors     = ["Mike Donlon"]
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   dirs.each do |dir|
     files += Dir["#{dir}/**/*"]
   end
-  s.add_dependency 'rest-client', "~> 2.0.0"
-  s.add_dependency 'addressable', "~> 2.3.5"
+  s.add_dependency 'rest-client', "~> 2.0"
+  s.add_dependency 'addressable', "~> 2.5"
   s.files       = files
   s.homepage    = 'https://github.com/wondeltd'
   s.license       = 'MIT'
