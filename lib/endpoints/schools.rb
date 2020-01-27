@@ -1,5 +1,7 @@
 module Wonde
   class Schools < Endpoints
+    alias_method :endpoint_get, :get
+
     attr_accessor :uri, :achievements, :attendance, :behaviours, :classes,
                   :contacts, :counts, :employees, :groups, :lessons,
                   :lessonAttendance, :medicalConditions, :medicalEvents,
@@ -47,9 +49,14 @@ module Wonde
     end
 
     def get(id, includes = Array.new(), parameters = Array.new())
-        self.uri = @@uri
-        school = super(id, includes, parameters)
-        return school
+      self.uri = @@uri
+      school = self.endpoint_get(id, includes, parameters)
+      return school
+    end
+
+    def meta(id, includes = Array.new(), parameters = Array.new())
+      self.uri = 'meta/schools/'
+      self.endpoint_get(id, includes, parameters)
     end
 
   end
