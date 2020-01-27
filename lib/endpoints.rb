@@ -65,7 +65,7 @@ module Wonde
       puts response if ENV["debug_wonde"]
       object = JSON.parse(response, object_class: OpenStruct)
       puts object if ENV["debug_wonde"]
-      object
+      object.data
     end
 
     def postRequest(endpoint, body=Hash.new())
