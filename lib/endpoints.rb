@@ -61,7 +61,7 @@ module Wonde
       else
         uri = self.uri + id
       end
-      response = getRequest(uri).body["data"]
+      response = getRequest(uri).body
       puts response if ENV["debug_wonde"]
       object = JSON.parse(response, object_class: OpenStruct)
       puts object if ENV["debug_wonde"]
