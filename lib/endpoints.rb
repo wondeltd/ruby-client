@@ -51,7 +51,7 @@ module Wonde
     # @param parameters [Hash]
     # @return [Object]
     def get(id, includes = Hash.new(), parameters = Hash.new())
-      unless includes.nil? or includes.empty?
+      unless includes.nil? || includes.empty?
         parameters['include'] = includes.join(",")
       end
       unless parameters.empty?
@@ -129,11 +129,11 @@ module Wonde
     end
 
     def all(includes = Array.new(), parameters = Hash.new())
-      unless includes.nil? or includes.empty?
+      unless includes.nil? || includes.empty?
         parameters['include'] = includes.join(",")
       end
 
-      unless parameters.nil? or parameters.empty?
+      unless parameters.nil? || parameters.empty?
         uriparams = Addressable::URI.new
         uriparams.query_values = parameters
         uriparams.query

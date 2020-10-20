@@ -6,7 +6,7 @@ module Wonde
     #most of these methods are here to be compatible 1:1 with the php module, standard ruby getters and setters should still work too
 
     def setStudentId(studentId)
-        if studentId.empty? or studentId.nil?
+        if studentId.nil? || studentId.empty?
             throw InvalidAttendanceException, 'Student id can not be set to null.'
         end
         @student_id = studentId
@@ -14,14 +14,14 @@ module Wonde
 
 
     def setAttendanceCodeId(attendanceCodeId)
-      if attendanceCodeId.empty? or attendanceCodeId.nil?
+      if attendanceCodeId.nil? || attendanceCodeId.empty?
           throw InvalidAttendanceException, 'Attendance code id can not be set to null.'
       end
       @attendance_code_id = attendanceCodeId
     end
 
     def setDate(date)
-      if date.empty? or date.nil?
+      if date.nil? || date.empty?
         throw InvalidAttendanceException, 'Date can not be set to null.'
       end
       begin
@@ -72,7 +72,7 @@ module Wonde
           'student_id':         self.getStudentId(),
           'attendance_code_id': self.getAttendanceCodeId()
         }
-        unless self.getComment.nil? or self.getComment.empty?
+        unless self.getComment.nil? || self.getComment.empty?
           required['comment'] = self.getComment()
         end
         return required
