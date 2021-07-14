@@ -206,6 +206,11 @@ school = client.school('SCHOOL_ID_GOES_HERE')
 school.attendance.all().each do |attendance|
     p attendance.comment
 end
+
+# Use `each_page` to conserve memory
+school.attendance.each_page do |page|
+    page.each{ |attendance_record| p attendance_record }
+end
 ```
 
 ### POST Attendance

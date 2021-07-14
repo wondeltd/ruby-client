@@ -129,23 +129,49 @@ module Wonde
     end
 
     def all(includes = Array.new(), parameters = Hash.new())
-      unless includes.nil? or includes.empty?
-        parameters['include'] = includes.join(",")
-      end
+      setup_uri(includes, parameters)
 
-      unless parameters.nil? or parameters.empty?
-        uriparams = Addressable::URI.new
-        uriparams.query_values = parameters
-        uriparams.query
-        uri = self.uri + '?' + uriparams.query
-      else
-        uri = self.uri
-      end
       response = getRequest(uri).body
       puts response if ENV["debug_wonde"]
       object = JSON.parse(response, object_class: OpenStruct)
       puts object if ENV["debug_wonde"]
       ResultIterator.new(object,self.token)
     end
+
+    def each_page(includes = Array.new(), parameters = Hash.new())
+      old_uri = @uri
+
+      setup_uri(includes, parameters)
+
+      response = JSON.parse(getRequest(@uri).body, object_class: OpenStruct)
+      @next_page = response.meta.pagination.next
+
+      yield response.data
+
+      while @next_page
+        response = JSON.parse(getUrl(@next_page).body, object_class: OpenStruct)
+        @next_page = response.meta.pagination.next
+
+        yield response.data
+      end
+
+      @uri = old_uri
+
+      self
+    end
+
+    private
+      def setup_uri(includes, parameters)
+        parameters['include'] = includes.join(",") unless includes.nil? || includes.empty?
+
+        unless parameters.nil? || parameters.empty?
+          uriparams = Addressable::URI.new
+          uriparams.query_values = parameters
+          uriparams.query
+          @uri = self.uri + '?' + uriparams.query
+        else
+          @uri = self.uri
+        end
+      end
   end
 end
