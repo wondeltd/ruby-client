@@ -1,4 +1,3 @@
-
 module Wonde
   autoload :Client, 'client'
   autoload :Endpoints, 'endpoints'
@@ -45,4 +44,6 @@ module Wonde
   autoload :InvalidSessionException, 'exceptions/invalidsessionexception'
   autoload :InvalidTokenException, 'exceptions/invalidtokenexception'
   autoload :ValidationError, 'exceptions/validationerror'
+
+  BASE_ENDPOINT = 'https://api.wonde.com/v1.0/'.freeze
 end

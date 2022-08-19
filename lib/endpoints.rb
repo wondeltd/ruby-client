@@ -8,11 +8,10 @@ module Wonde
     require 'json'
     attr_accessor :endpoint, :uri, :token, :version
     # Main endpoint, base URI
-    @@endpoint = 'https://api.wonde.com/v1.0/'
+    @@endpoint = Wonde::BASE_ENDPOINT
 
-
-    def initialize(token, uri=false)
-      self.endpoint = @@endpoint
+    def initialize(token, uri = false, endpoint = nil)
+      self.endpoint = endpoint || @@endpoint
       self.uri = String.new()
       self.version = '0.0.1'
       self.token = token

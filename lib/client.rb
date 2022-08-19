@@ -18,6 +18,7 @@ module Wonde
     @@attendanceCodes
     @@token
     @@version = '0.0.6'
+
     # Initialize a Client Object
     #
     # @param token [String]
