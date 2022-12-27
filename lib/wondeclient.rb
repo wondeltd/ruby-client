@@ -27,6 +27,7 @@ module Wonde
   autoload :Rooms, 'endpoints/rooms'
   autoload :Schools, 'endpoints/schools'
   autoload :Students, 'endpoints/students'
+  autoload :StudentsPreAdmission, 'endpoints/studentspreadmission'
   autoload :Subjects, 'endpoints/subjects'
   #Assesments
   autoload :Aspects, 'endpoints/assessment/aspects'
