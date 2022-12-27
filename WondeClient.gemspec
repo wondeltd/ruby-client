@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'wondeclient'
-  s.version     = '0.1.5'
+  s.version     = '0.1.6'
   s.date        = '2019-11-15'
   s.summary     = "Wonde Client"
   s.description = "Wonde Client"
