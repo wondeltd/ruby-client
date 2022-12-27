@@ -13,6 +13,13 @@ Gem::Specification.new do |s|
   end
   s.add_dependency 'rest-client', "~> 2.0"
   s.add_dependency 'addressable', "~> 2.5"
+
+
+Gem::Specification.new do |s|
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'debugger'
+  s.add_development_dependency 'rake'
+end
   s.files       = files
   s.homepage    = 'https://github.com/wondeltd'
   s.license       = 'MIT'

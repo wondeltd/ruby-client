@@ -63,9 +63,9 @@ module Wonde
       end
       response = getRequest(uri).body
       puts response if ENV["debug_wonde"]
-      object = JSON.parse(response, object_class: OpenStruct)
+      object = JSON.parse(response)
       puts object if ENV["debug_wonde"]
-      object.data
+      object["data"]
     end
 
     def postRequest(endpoint, body=Hash.new())
@@ -95,7 +95,7 @@ module Wonde
       if hash_response.nil?
         return Hash.new()
       end
-      OpenStruct.new hash_response
+      hash_response
     end
 
     def deleteRequest(endpoint, body=Hash.new())
@@ -125,7 +125,7 @@ module Wonde
       if hash_response.nil?
         return Hash.new()
       end
-      OpenStruct.new hash_response
+      hash_response
     end
 
     def all(includes = Array.new(), parameters = Hash.new())
@@ -143,9 +143,9 @@ module Wonde
       end
       response = getRequest(uri).body
       puts response if ENV["debug_wonde"]
-      object = JSON.parse(response, object_class: OpenStruct)
+      object = JSON.parse(response)
       puts object if ENV["debug_wonde"]
-      ResultIterator.new(object,self.token)
+      object
     end
   end
 end

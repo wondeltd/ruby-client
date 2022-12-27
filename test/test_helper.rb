@@ -1,7 +1,8 @@
 require "minitest/autorun"
+require 'pry'
 
 class Minitest::Test
-  @@ACCESSTOKEN = ENV["wonde-token"]
-  @@SCHOOLID = ENV["wonde-school-id"]
+  @@ACCESSTOKEN = ENV['CORE_TOKEN']
+  @@SCHOOLID = ENV['WONDE_SCHOOL_ID']
   @@client = Wonde::Client.new(@@ACCESSTOKEN)
 end

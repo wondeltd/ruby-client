@@ -7,11 +7,7 @@ end
 desc "Run tests"
 task :default => :test
 
-begin
-  require "hanna/rdoctask"
-rescue LoadError
-  require "rake/rdoctask"
-end
+require 'rdoc/task'
 
 # Generate documentation
 Rake::RDocTask.new do |rd|
