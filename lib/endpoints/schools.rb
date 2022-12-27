@@ -4,6 +4,7 @@ module Wonde
                   :contacts, :counts, :employees, :groups, :lessons,
                   :lessonAttendance, :medicalConditions, :medicalEvents,
                   :medicalNotes, :periods, :photos, :rooms, :subjects, :students,
+                  :studentsPreAdmission,
                   :assessment, :deletions, :events, :attendanceSummaries
     @@uri = 'schools/'
     def initialize(token, id=false)
@@ -33,6 +34,7 @@ module Wonde
       self.photos              = Wonde::Photos.new(token, self.uri)
       self.rooms               = Wonde::Rooms.new(token, self.uri)
       self.students            = Wonde::Students.new(token, self.uri)
+      self.studentsPreAdmission            = Wonde::StudentsPreAdmission.new(token, self.uri)
       self.subjects            = Wonde::Subjects.new(token, self.uri)
     end
 
