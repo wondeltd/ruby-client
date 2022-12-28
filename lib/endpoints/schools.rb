@@ -4,7 +4,7 @@ module Wonde
                   :contacts, :counts, :employees, :groups, :lessons,
                   :lessonAttendance, :medicalConditions, :medicalEvents,
                   :medicalNotes, :periods, :photos, :rooms, :subjects, :students,
-                  :studentsPreAdmission,
+                  :studentsPreAdmission,:achievementsAttributes,:behavioursAttributes,
                   :assessment, :deletions, :events, :attendanceSummaries
     @@uri = 'schools/'
     def initialize(token, id=false)
@@ -14,9 +14,11 @@ module Wonde
       self.uri = @@uri + id + '/' if id
       self.uri = self.uri.gsub("//", "/").chomp("/")
       self.achievements        = Wonde::Achievements.new(token, self.uri)
+      self.achievementsAttributes        = Wonde::AchievementsAttributes.new(token, self.uri)
       self.assessment          = Wonde::Assessment.new(token, self.uri)
       self.attendance          = Wonde::Attendance.new(token, self.uri)
       self.behaviours          = Wonde::Behaviours.new(token, self.uri)
+      self.behavioursAttributes          = Wonde::BehavioursAttributes.new(token, self.uri)
       self.classes             = Wonde::Classes.new(token, self.uri)
       self.contacts            = Wonde::Contacts.new(token, self.uri)
       self.counts              = Wonde::Counts.new(token, self.uri)

@@ -1,9 +1,8 @@
 require 'wondeclient'
 require 'minitest/autorun'
 class WondeTest < Minitest::Test
-  def test_returns_schools
-    response = @@client.requestAccess("A0000000000")
-    assert trueß
+  def test_request_access
+    response = @@client.requestAccess(@@SCHOOLID)
+    assert response
   end
-
 end

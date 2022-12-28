@@ -5,11 +5,13 @@ module Wonde
   autoload :ResultIterator, 'resultiterator'
   #Endpoints
   autoload :Achievements, 'endpoints/achievements'
+  autoload :AchievementsAttributes, 'endpoints/achievements_attributes'
   autoload :Assessment, 'endpoints/assessment'
   autoload :Attendance, 'endpoints/attendance'
   autoload :AttendanceCodes, 'endpoints/attendancecodes'
   autoload :AttendanceSummaries, 'endpoints/attendancesummaries'
   autoload :Behaviours, 'endpoints/behaviours'
+  autoload :BehavioursAttributes, 'endpoints/behaviours_attributes'
   autoload :Classes, 'endpoints/classes'
   autoload :Contacts, 'endpoints/contacts'
   autoload :Counts, 'endpoints/counts'
