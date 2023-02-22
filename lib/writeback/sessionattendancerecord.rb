@@ -1,7 +1,7 @@
 module Wonde
   class SessionAttendanceRecord
     require 'time'
-    attr_accessor :student_id, :date, :session, :attendance_code_id, :comment
+    attr_accessor :student_id, :date, :session, :attendance_code_id, :comment, :minutes_late, :employee_id
 
     #most of these methods are here to be compatible 1:1 with the php module, standard ruby getters and setters should still work too
 
@@ -11,7 +11,6 @@ module Wonde
         end
         @student_id = studentId
     end
-
 
     def setAttendanceCodeId(attendanceCodeId)
       if attendanceCodeId.empty? or attendanceCodeId.nil?
@@ -73,7 +72,9 @@ module Wonde
           'attendance_code_id': self.getAttendanceCodeId()
         }
         unless self.getComment.nil? or self.getComment.empty?
-          required['comment'] = self.getComment()
+          required['comment'] = self.getComment(),
+          required['minutes_late'] = self.getMinutesLate(),
+          required['employee_id'] =  self.getEmployeeId()
         end
         return required
     end
@@ -84,6 +85,22 @@ module Wonde
 
     def setComment(comment)
         self.comment = comment;
+    end
+
+    def getMinutesLate()
+        self.minutes_late;
+    end
+
+    def setMinutesLate()
+        self.minutes_late = minutes_late;
+    end
+
+    def getEmployeeId()
+        self.employee_id;
+    end
+
+    def setEmployeeId()
+      self.employee_id = employee_id;
     end
   end
 end
