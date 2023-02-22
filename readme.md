@@ -234,7 +234,7 @@ attendance.setEmployeeId('employee id here')
 register.add(attendance)
 
 # Save the session register to pre-existing school object from client.school('ID')
-result = school.attendance().sessionRegister(register)
+result = school.attendance().session_register(register)
 
 # Writeback id is part of the response
 p result.writeback_id

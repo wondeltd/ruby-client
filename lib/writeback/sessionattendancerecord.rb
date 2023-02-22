@@ -29,7 +29,7 @@ module Wonde
         throw InvalidAttendanceException, 'Date provided is invalid'
       end
       newdate = Time.at(mytime)
-      self.date = newdate
+      self.date = newdate.to_date.to_s
     end
 
 
@@ -51,7 +51,6 @@ module Wonde
         return self.student_id
     end
 
-
     def getAttendanceCodeId()
         return self.attendance_code_id
     end
@@ -72,10 +71,17 @@ module Wonde
           'attendance_code_id': self.getAttendanceCodeId()
         }
         unless self.getComment.nil? or self.getComment.empty?
-          required['comment'] = self.getComment(),
-          required['minutes_late'] = self.getMinutesLate(),
-          required['employee_id'] =  self.getEmployeeId()
+          required[:comment] = self.getComment()
         end
+
+        unless self.getMinutesLate.nil? or self.getMinutesLate.empty?
+          required[:minutes_late] = self.getMinutesLate()
+        end
+
+        unless self.getEmployeeId.nil? or self.getEmployeeId.empty?
+          required[:employee_id] =  self.getEmployeeId()
+        end
+
         return required
     end
 
@@ -91,7 +97,7 @@ module Wonde
         self.minutes_late;
     end
 
-    def setMinutesLate()
+    def setMinutesLate(minutes_late)
         self.minutes_late = minutes_late;
     end
 
@@ -99,7 +105,7 @@ module Wonde
         self.employee_id;
     end
 
-    def setEmployeeId()
+    def setEmployeeId(employee_id)
       self.employee_id = employee_id;
     end
   end

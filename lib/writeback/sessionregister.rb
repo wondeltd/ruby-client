@@ -1,30 +1,23 @@
 module Wonde
   class SessionRegister
     attr_accessor :attendance
-    def initialize()
-      self.attendance = Array.new()
+
+    def initialize
+      # require array of attendance atrributes by de api
+      @attendance = []
     end
 
-    def to_json()
-            {'attendance' => [self.attendance]}.to_json
+    def to_json
+      { 'attendance' => [attendance] }.to_json
     end
 
-    def add(attendance)
-      newattendance = Array.new()
-      newattendance.push(attendance)
-      newattendance.each do |attendanceSingular|
-        if attendanceSingular.class == SessionAttendanceRecord && attendanceSingular.isValid()
-          self.attendance = attendanceSingular.toArray()
-        else
-          unless attendanceSingular.class == SessionAttendanceRecord
-            throw InvalidAttendanceException, 'Attendance is not an instance of the Attendance Class.'
-          end
-          unless attendanceSingular.isValid()
-            throw InvalidAttendanceException, 'Attendance has empty fields.'
-          end
-            throw InvalidAttendanceException
-        end
+    def add(attendance_record)
+      attendance.push(attendance_record.toArray)
+      unless attendance_record.instance_of?(SessionAttendanceRecord)
+        throw InvalidAttendanceException, 'Attendance is not an instance of the Attendance Class.'
       end
+
+      throw InvalidAttendanceException, 'Attendance has empty fields.' unless attendance_record.isValid
     end
   end
 end
