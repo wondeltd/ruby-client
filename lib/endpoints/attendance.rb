@@ -10,7 +10,7 @@ module Wonde
 
     def session_register(register)
       throw InvalidSessionException unless register.class == SessionRegister
-      return self.post({ attendance: register.attendance })
+      post({ attendance: register.attendance })
     end
   end
 end

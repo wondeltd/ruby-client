@@ -416,7 +416,7 @@ attendance.setAttendanceCodeId('ATTENDANCE_CODE_ID_GOES_HERE')
 register.add(attendance)
 
 # Save the lesson register to pre-existing school object from client.school('ID')
-result = school.lessonAttendance().lessonRegister(register)
+result = school.lessonAttendance().lesson_register(register)
 
 # Writeback id is part of the response
 p result.writeback_id

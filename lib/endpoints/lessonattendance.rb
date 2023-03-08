@@ -7,9 +7,9 @@ module Wonde
       self.uri = id + '/' + @@uri if id
       self.uri = self.uri.gsub("//", "/").chomp("/")
     end
-    def lessonRegister(register)
+    def lesson_register(register)
       throw InvalidSessionException unless register.class == LessonRegister
-      return self.post(register)
+      post({ attendance: register.attendance })
     end
   end
 end

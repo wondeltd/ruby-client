@@ -1,6 +1,7 @@
 module Wonde
   class LessonAttendanceRecord
-    attr_accessor :student_id, :lesson_id, :attendance_code_id
+
+    attr_accessor :student_id, :lesson_id, :attendance_code_id, :comment, :minutes_late
 
     #most of these methods are here to be compatible 1:1 with the php module, standard ruby getters and setters should still work too
 
@@ -41,13 +42,34 @@ module Wonde
         return self.attendance_code_id
     end
 
-    def toArray()
-        required = {
-            'lesson_id':          self.getLessonId(),
-            'student_id':         self.getStudentId(),
-            'attendance_code_id': self.getAttendanceCodeId()
-        }
-        return required
+    def toArray
+      required = {
+        'lesson_id': getLessonId,
+        'student_id': getStudentId,
+        'attendance_code_id': getAttendanceCodeId
+      }
+
+      required[:comment] = getComment unless getComment.nil? || getComment.empty?
+
+      required[:minutes_late] = getMinutesLate unless getMinutesLate.nil? || getMinutesLate.empty?
+
+      required
+    end
+
+    def getComment
+      comment
+    end
+
+    def setComment(comment)
+      self.comment = comment
+    end
+
+    def getMinutesLate
+      minutes_late
+    end
+
+    def setMinutesLate(minutes_late)
+      self.minutes_late = minutes_late
     end
   end
 end
