@@ -5,7 +5,7 @@ module Wonde
                   :lessonAttendance, :medicalConditions, :medicalEvents,
                   :medicalNotes, :periods, :photos, :rooms, :subjects, :students,
                   :studentsPreAdmission,:achievementsAttributes,:behavioursAttributes,
-                  :assessment, :deletions, :events, :attendanceSummaries
+                  :assessment, :deletions, :events, :attendanceSummaries, :detentions
     @@uri = 'schools/'
     def initialize(token, id=false)
       super(token, id)
@@ -23,6 +23,7 @@ module Wonde
       self.contacts            = Wonde::Contacts.new(token, self.uri)
       self.counts              = Wonde::Counts.new(token, self.uri)
       self.deletions           = Wonde::Deletions.new(token, self.uri)
+      self.detentions          = Wonde::Detentions.new(token, self.uri)
       self.employees           = Wonde::Employees.new(token, self.uri)
       self.events              = Wonde::Events.new(token, self.uri)
       self.groups              = Wonde::Groups.new(token, self.uri)
