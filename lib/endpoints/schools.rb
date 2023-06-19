@@ -5,7 +5,8 @@ module Wonde
                   :lessonAttendance, :medicalConditions, :medicalEvents,
                   :medicalNotes, :periods, :photos, :rooms, :subjects, :students,
                   :studentsPreAdmission,:achievementsAttributes,:behavioursAttributes,
-                  :assessment, :deletions, :events, :attendanceSummaries, :detentions, :detentionTypes
+                  :assessment, :deletions, :events, :attendanceSummaries, :detentions, :detentionTypes,
+                  :attendanceDetention
     @@uri = 'schools/'
     def initialize(token, id=false)
       super(token, id)
@@ -17,6 +18,7 @@ module Wonde
       self.achievementsAttributes        = Wonde::AchievementsAttributes.new(token, self.uri)
       self.assessment          = Wonde::Assessment.new(token, self.uri)
       self.attendance          = Wonde::Attendance.new(token, self.uri)
+      self.attendanceDetention = Wonde::AttendanceDetention.new(token, self.uri)
       self.behaviours          = Wonde::Behaviours.new(token, self.uri)
       self.behavioursAttributes          = Wonde::BehavioursAttributes.new(token, self.uri)
       self.classes             = Wonde::Classes.new(token, self.uri)

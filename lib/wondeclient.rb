@@ -9,6 +9,7 @@ module Wonde
   autoload :Assessment, 'endpoints/assessment'
   autoload :Attendance, 'endpoints/attendance'
   autoload :AttendanceCodes, 'endpoints/attendancecodes'
+  autoload :attendanceDetention, 'endpoints/attendance_detention'
   autoload :AttendanceSummaries, 'endpoints/attendancesummaries'
   autoload :Behaviours, 'endpoints/behaviours'
   autoload :BehavioursAttributes, 'endpoints/behaviours_attributes'
