@@ -17,6 +17,7 @@ module Wonde
   autoload :Counts, 'endpoints/counts'
   autoload :Deletions, 'endpoints/deletions'
   autoload :Detentions, 'endpoints/detentions'
+  autoload :DetentionTypes, 'endpoints/detentiontypes'
   autoload :Employees, 'endpoints/employees'
   autoload :Events, 'endpoints/events'
   autoload :Groups, 'endpoints/groups'
